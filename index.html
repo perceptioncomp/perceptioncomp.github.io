@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="PerceptionComp: A fully manually annotated video benchmark for complex perception-centric reasoning. 1,114 five-choice questions over 279 high-complexity videos requiring long-horizon, multi-step perceptual reasoning.">
+  <meta name="keywords" content="PerceptionComp, Video Understanding, Multimodal LLM, Benchmark, Perception-Centric Reasoning, CVPR 2026, Video QA">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PerceptionComp: A Video Benchmark for Complex Perception-Centric Reasoning</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bulma.min.css">
+  <!-- Empty favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'></svg>">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bulma.min.js"></script>
+  <script src="./static/js/jquery.csv.min.js"></script>
+  <script src="./static/js/csv_to_html_table.js"></script>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow:1; justify-content:center;">
+      <a class="navbar-item" href="#abstract">Abstract</a>
+      <a class="navbar-item" href="#benchmark-intro">Benchmark</a>
+      <a class="navbar-item" href="#examples">Examples</a>
+      <a class="navbar-item" href="#bibtex">BibTeX</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero pc-hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-2 publication-title" style="color:white; line-height:1.25;">
+            <span class="pc-gradient-name">PerceptionComp</span>: A Video Benchmark for<br>Complex Perception-Centric Reasoning
+          </h1>
+
+          <div class="is-size-5 publication-authors" style="margin-top:24px;">
+            <span class="author-block"><a href="#" class="pc-author-link">Shaoxuan Li</a><sup>1*</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Zhixuan Zhao</a><sup>1*</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Hanze Deng</a><sup>1*</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Zirun Ma</a><sup>1*</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Shulin Tian</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Zuyan Liu</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Yushi Hu</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Haoning Wu</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Yuhao Dong</a><sup>3#</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Benlin Liu</a><sup>2#</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Ziwei Liu</a><sup>3&#8224;</sup>,</span>
+            <span class="author-block"><a href="#" class="pc-author-link">Ranjay Krishna</a><sup>2&#8224;</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors" style="color:rgba(255,255,255,0.65); margin-top:10px;">
+            <span class="author-block"><sup>1</sup>Tsinghua University</span>
+            &nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>University of Washington</span>
+            &nbsp;&nbsp;
+            <span class="author-block"><sup>3</sup>Nanyang Technological University</span>
+          </div>
+
+          <div class="is-size-6" style="color:rgba(255,255,255,0.5); margin-top:8px;">
+            * Equal contribution &nbsp;&nbsp;&nbsp; # Project co-lead &nbsp;&nbsp;&nbsp; &#8224; Equal advising
+          </div>
+
+          <div class="publication-links" style="margin-top:28px;">
+            <span class="link-block">
+              <a href="#" class="external-link button is-normal is-rounded pc-link-btn">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#" class="external-link button is-normal is-rounded pc-link-btn">
+                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                <span>arXiv</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#" class="external-link button is-normal is-rounded pc-link-btn">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#" class="external-link button is-normal is-rounded pc-link-btn">
+                <span class="icon"><i class="fas fa-database"></i></span>
+                <span>Dataset</span>
+              </a>
+            </span>
+          </div>
+<!-- m:这一段需要最后加一下链接 -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATS BAR ========== -->
+<section class="pc-stats-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <div class="pc-stat-box">
+          <span class="pc-stat-number">1,114</span>
+          <span class="pc-stat-label">Five-Choice Questions</span>
+        </div>
+      </div>
+      <div class="column">
+        <div class="pc-stat-box">
+          <span class="pc-stat-number">279</span>
+          <span class="pc-stat-label">High-Complexity Videos</span>
+        </div>
+      </div>
+      <div class="column">
+        <div class="pc-stat-box">
+          <span class="pc-stat-number">7</span>
+          <span class="pc-stat-label">Video Categories</span>
+        </div>
+      </div>
+      <div class="column">
+        <div class="pc-stat-box">
+          <span class="pc-stat-number">10–20<span class="pc-stat-unit">min</span></span>
+          <span class="pc-stat-label">Per Question Annotation</span>
+        </div>
+      </div>
+      <div class="column">
+        <div class="pc-stat-box">
+          <span class="pc-stat-number">100%</span>
+          <span class="pc-stat-label">Manual Annotation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PAPER FIGURE ========== -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3 has-text-centered">Paper Teaser</h2>
+      <figure class="image" style="margin:0 auto;">
+        <img src="pics/fig_teaser_eccv.png" alt="PerceptionComp paper figure" style="border-radius:10px; box-shadow:0 4px 24px rgba(0,0,0,0.13); display:block; margin:0 auto;"/>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LEADERBOARD SECTION ========== -->
+<section class="section" id="leaderboard">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered" style="margin-bottom:1rem;"><span class="pc-fancy-title">Leaderboard</span></h2>
+    <p class="subtitle has-text-centered" style="margin-bottom:2rem;">
+      Comprehensive evaluation across video categories and difficulty levels &nbsp;&#183;&nbsp; Chance level = 20%
+    </p>
+
+    <div id="leaderboard-container" style="margin-bottom:2rem;"></div>
+
+    <p class="has-text-centered" style="margin-top:2rem; font-size:0.85rem; color:#64748b;">
+      Table is sortable by clicking column headers. Download data for further analysis.
+    </p>
+  </div>
+</section>
+
+<!-- ========== ABSTRACT ========== -->
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Deep video understanding requires long-horizon, perception-centric reasoning that repeatedly revisits a video to gather temporally distributed evidence. However, existing benchmarks are either relatively easy (perception-centric but often solvable after a single view) or logic-heavy with simplified visuals, and thus do not faithfully measure multimodal test-time thinking that depends on repeated perception.
+          </p>
+          <p>
+            We introduce <strong>PerceptionComp</strong>, a fully manually annotated benchmark designed so that <em>no single moment is sufficient</em>: answering requires evidence from multiple temporally separated segments under compositional constraints. PerceptionComp contains <strong>1,114 five-choice questions</strong> over <strong>279 high-scene-complexity videos</strong> spanning diverse domains. Videos are selected using automatic proxies for scene complexity (SAM2 instance counts and optical-flow magnitude), and each question requires <strong>10–20 minutes</strong> of annotation.
+          </p>
+          <p>
+            Human evaluation confirms the intended difficulty: PerceptionComp requires substantially longer response times than prior benchmarks, and under a single-view setting (no rewatching) human accuracy drops to near chance (<strong>18.97%</strong>), while experts can reach <strong>100% accuracy</strong> with unrestricted rewatching and sufficient time. State-of-the-art MLLMs perform notably worse: the best model (Gemini-3-Flash) reaches only <strong>45.96%</strong> accuracy, and open-source MLLMs remain below 40%.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== KEY FINDINGS ========== -->
+<section class="section pc-gray-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Findings & Results</h2>
+    <p class="subtitle has-text-centered" style="margin-bottom:2rem;">
+      Important insights from PerceptionComp evaluation
+    </p>
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <div class="pc-finding-card">
+          <div class="pc-finding-icon" style="background:#dbeafe; color:#2563eb;"><i class="fas fa-robot"></i></div>
+          <div>
+            <p style="font-weight:700; margin-bottom:4px;">Language Reasoning ≠ Perceptual Reasoning</p>
+            <p style="font-size:0.88rem; color:#4b5563;">Stronger language-side thinking does not automatically improve perception-driven video reasoning. Qwen3-VL thinking variants sometimes underperform their instruction-tuned counterparts when perceptual evidence is misread.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="pc-finding-card">
+          <div class="pc-finding-icon" style="background:#dcfce7; color:#16a34a;"><i class="fas fa-chart-line"></i></div>
+          <div>
+            <p style="font-weight:700; margin-bottom:4px;">Test-Time Reasoning Helps (+11%)</p>
+            <p style="font-size:0.88rem; color:#4b5563;">GPT-o3 surpasses GPT-4o by 11.04%; Gemini-2.5-Pro exceeds Gemini-2.5-Flash by 6.19%. Reasoning is beneficial but far from closing the gap to human-level performance.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="pc-finding-card">
+          <div class="pc-finding-icon" style="background:#fce7f3; color:#db2777;"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <p style="font-weight:700; margin-bottom:4px;">Spatial Understanding is the Bottleneck</p>
+            <p style="font-size:0.88rem; color:#4b5563;">60% of mid-chain failures are attributed to violated spatial subconditions. Models anchor on objects matching identity keywords but violating critical spatial or temporal constraints.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="pc-finding-card">
+          <div class="pc-finding-icon" style="background:#fef3c7; color:#d97706;"><i class="fas fa-link"></i></div>
+          <div>
+            <p style="font-weight:700; margin-bottom:4px;">Mid-Chain Collapse (Peak at Step 3: 40%)</p>
+            <p style="font-size:0.88rem; color:#4b5563;">Once an intermediate entity is wrong, the remaining chain drifts from ground truth while staying internally coherent — especially severe for sequential questions where later conditions depend on earlier results.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="pc-finding-card">
+          <div class="pc-finding-icon" style="background:#f3e8ff; color:#9333ea;"><i class="fas fa-grip-horizontal"></i></div>
+          <div>
+            <p style="font-weight:700; margin-bottom:4px;">Frontier Models Cluster in the Mid-40s</p>
+            <p style="font-size:0.88rem; color:#4b5563;">Gemini-3 variants and GPT-o3 all cluster around 43–46% despite different architectures, suggesting a fundamental bottleneck in perception-centric long-horizon reasoning.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="pc-finding-card">
+          <div class="pc-finding-icon" style="background:#ecfdf5; color:#059669;"><i class="fas fa-expand-arrows-alt"></i></div>
+          <div>
+            <p style="font-weight:700; margin-bottom:4px;">Scale Alone Does Not Solve It</p>
+            <p style="font-size:0.88rem; color:#4b5563;">Qwen3-VL 235B ≈ Qwen3-VL 8B ≈ 34% overall. The benchmark requires reliable perceptual extraction under clutter, not merely larger generic capacity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EXAMPLE DEMOS ========== -->
+<section class="section" id="examples">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Example Demonstrations</h2>
+    <p class="subtitle has-text-centered" style="margin-bottom:2rem;">
+      Sample analysis from PerceptionComp videos
+    </p>
+    
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <figure class="image">
+          <img src="pics/demo1.png" alt="Demo Example 1" style="border-radius:10px; box-shadow:0 4px 24px rgba(0,0,0,0.13);"/>
+        </figure>
+        <p class="has-text-centered" style="margin-top:1rem; font-size:0.85rem; color:#64748b;">Example 1</p>
+      </div>
+      <div class="column is-half">
+        <figure class="image">
+          <img src="pics/demo2.png" alt="Demo Example 2" style="border-radius:10px; box-shadow:0 4px 24px rgba(0,0,0,0.13);"/>
+        </figure>
+        <p class="has-text-centered" style="margin-top:1rem; font-size:0.85rem; color:#64748b;">Example 2</p>
+      </div>
+      <div class="column is-half">
+        <figure class="image">
+          <img src="pics/demo3.png" alt="Demo Example 3" style="border-radius:10px; box-shadow:0 4px 24px rgba(0,0,0,0.13);"/>
+        </figure>
+        <p class="has-text-centered" style="margin-top:1rem; font-size:0.85rem; color:#64748b;">Example 3</p>
+      </div>
+      <div class="column is-half">
+        <figure class="image">
+          <img src="pics/demo4.png" alt="Demo Example 4" style="border-radius:10px; box-shadow:0 4px 24px rgba(0,0,0,0.13);"/>
+        </figure>
+        <p class="has-text-centered" style="margin-top:1rem; font-size:0.85rem; color:#64748b;">Example 4</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BENCHMARK INTRODUCTION ========== -->
+<section class="section" id="benchmark-intro">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Benchmark Design</h2>
+
+    <!-- Pipeline -->
+    <div class="pc-pipeline" style="margin-bottom:3rem;">
+      <div class="pc-pipeline-step">
+        <div class="pc-pipeline-icon" style="background:#dbeafe; color:#2563eb;"><i class="fas fa-video fa-lg"></i></div>
+        <p class="pc-pipeline-label">Video Selection</p>
+        <p class="pc-pipeline-sub">SAM2 + optical flow complexity</p>
+      </div>
+      <div class="pc-pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="pc-pipeline-step">
+        <div class="pc-pipeline-icon" style="background:#dcfce7; color:#16a34a;"><i class="fas fa-layer-group fa-lg"></i></div>
+        <p class="pc-pipeline-label">Subcondition Design</p>
+        <p class="pc-pipeline-sub">Semantic · Spatial · Temporal · Correspondence</p>
+      </div>
+      <div class="pc-pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="pc-pipeline-step">
+        <div class="pc-pipeline-icon" style="background:#fce7f3; color:#db2777;"><i class="fas fa-puzzle-piece fa-lg"></i></div>
+        <p class="pc-pipeline-label">Question Assembly</p>
+        <p class="pc-pipeline-sub">Conjunctive or Sequential</p>
+      </div>
+      <div class="pc-pipeline-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="pc-pipeline-step">
+        <div class="pc-pipeline-icon" style="background:#fef3c7; color:#d97706;"><i class="fas fa-check-double fa-lg"></i></div>
+        <p class="pc-pipeline-label">Annotation &amp; Verification</p>
+        <p class="pc-pipeline-sub">Dual-annotator check · 89% agreement</p>
+      </div>
+    </div>
+
+    <!-- Video Categories -->
+    <h3 class="title is-4" style="margin-bottom:1rem;">Video Categories</h3>
+    <p class="content">We select videos with high scene and object complexity across seven diverse real-world categories (2–10 min clips). Complexity is measured via <strong>SAM2 instance counts</strong> and <strong>optical-flow magnitude</strong>.</p>
+    <div class="columns is-multiline" style="margin-bottom:2.5rem;">
+      <div class="column is-one-third-tablet is-half-mobile">
+        <div class="pc-category-card">
+          <span class="icon is-large" style="color:#2563eb;"><i class="fas fa-city fa-2x"></i></span>
+          <p class="pc-category-name">City Walk Tours</p>
+          <p class="pc-category-desc">Dense pedestrian traffic, complex street scenes, frequent camera motion</p>
+        </div>
+      </div>
+      <div class="column is-one-third-tablet is-half-mobile">
+        <div class="pc-category-card">
+          <span class="icon is-large" style="color:#059669;"><i class="fas fa-shopping-bag fa-2x"></i></span>
+          <p class="pc-category-name">Shopping in Malls</p>
+          <p class="pc-category-desc">Crowded indoor environments with stores, signs, and many objects</p>
+        </div>
+      </div>
+      <div class="column is-one-third-tablet is-half-mobile">
+        <div class="pc-category-card">
+          <span class="icon is-large" style="color:#dc2626;"><i class="fas fa-running fa-2x"></i></span>
+          <p class="pc-category-name">Sports Competitions</p>
+          <p class="pc-category-desc">Fast motion, multiple athletes, dynamic scenes and scene transitions</p>
+        </div>
+      </div>
+      <div class="column is-one-third-tablet is-half-mobile">
+        <div class="pc-category-card">
+          <span class="icon is-large" style="color:#9333ea;"><i class="fas fa-home fa-2x"></i></span>
+          <p class="pc-category-name">Indoor Villa Tours</p>
+          <p class="pc-category-desc">Large indoor spaces with rich object arrangements across many rooms</p>
+        </div>
+      </div>
+      <div class="column is-one-third-tablet is-half-mobile">
+        <div class="pc-category-card">
+          <span class="icon is-large" style="color:#d97706;"><i class="fas fa-tv fa-2x"></i></span>
+          <p class="pc-category-name">Variety Shows</p>
+          <p class="pc-category-desc">Entertainment shows with multiple people, events, and stage changes</p>
+        </div>
+      </div>
+      <div class="column is-one-third-tablet is-half-mobile">
+        <div class="pc-category-card">
+          <span class="icon is-large" style="color:#0891b2;"><i class="fas fa-film fa-2x"></i></span>
+          <p class="pc-category-name">Movie Clips</p>
+          <p class="pc-category-desc">Film excerpts with complex narratives and rich visual detail</p>
+        </div>
+      </div>
+      <div class="column is-one-third-tablet is-half-mobile">
+        <div class="pc-category-card">
+          <span class="icon is-large" style="color:#7c3aed;"><i class="fas fa-gamepad fa-2x"></i></span>
+          <p class="pc-category-name">Game Livestreams</p>
+          <p class="pc-category-desc">Screen-captured games with naturally occurring clutter and dynamics</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perceptual Skills -->
+    <h3 class="title is-4" style="margin-bottom:1rem;">Perceptual Skills</h3>
+    <p class="content">Each question combines subconditions probing distinct skills. Solving a question requires their coordinated use, not any single narrow competence.</p>
+    <div class="columns" style="margin-bottom:2.5rem;">
+      <div class="column">
+        <div class="pc-skill-card" style="border-top:3px solid #2563eb;">
+          <h4 class="title is-6" style="color:#2563eb;"><i class="fas fa-eye"></i>&nbsp; Semantic Understanding</h4>
+          <p>Recognize object categories, attributes (shape, color, material), and higher-level relations such as roles or interactions.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="pc-skill-card" style="border-top:3px solid #059669;">
+          <h4 class="title is-6" style="color:#059669;"><i class="fas fa-map-marked-alt"></i>&nbsp; Spatial Understanding</h4>
+          <p>Reason about scene layout and relative geometry — left/right, front/behind, near/far, occlusion, and 3D spatial relations.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="pc-skill-card" style="border-top:3px solid #dc2626;">
+          <h4 class="title is-6" style="color:#dc2626;"><i class="fas fa-clock"></i>&nbsp; Temporal Understanding</h4>
+          <p>Follow motion patterns, localize events in time (before/after a reference event), and reason about event ordering.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="pc-skill-card" style="border-top:3px solid #9333ea;">
+          <h4 class="title is-6" style="color:#9333ea;"><i class="fas fa-link"></i>&nbsp; Correspondence</h4>
+          <p>Match instances across time and views — tracking objects across shots, part–whole matching, re-identification after occlusion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ========== BIBTEX ========== -->
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{li2026perceptioncomp,
+  title     = {{PerceptionComp}: A Video Benchmark for Complex Perception-Centric Reasoning},
+  author    = {Li, Shaoxuan and Zhao, Zhixuan and Deng, Hanze and Ma, Zirun and
+               Tian, Shulin and Liu, Zuyan and Hu, Yushi and Wu, Haoning and
+               Dong, Yuhao and Liu, Benlin and Liu, Ziwei and Krishna, Ranjay},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>PerceptionComp</strong> &nbsp;&#183;&nbsp; CVPR 2026
+      &nbsp;&#183;&nbsp;
+      Tsinghua University, University of Washington, Nanyang Technological University
+    </p>
+    <p style="margin-top:8px; font-size:0.85rem; color:#94a3b8;">
+      Website template adapted from <a href="https://github.com/nerfies/nerfies.github.io" style="color:#94a3b8;">Nerfies</a>.
+      Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="color:#94a3b8;">CC BY-SA 4.0</a>.
+    </p>
+  </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+  CsvToHtmlTable.init({
+    csv_path: './static/leaderboard.csv',
+    element: 'leaderboard-container',
+    allow_download: true,
+    csv_options: {separator: ',', delimiter: '"'},
+    datatables_options: {
+      "paging": false,
+      "order": [[14, 'desc']],
+      "columnDefs": [
+        {targets: 0, className: 'dt-left'},
+        {targets: [1,2,3], visible: false}
+      ]
+    }
+  });
+});
+</script>
+
+</body>
+</html>
