@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="PerceptionComp: A fully manually annotated video benchmark for complex perception-centric reasoning. 1,114 five-choice questions over 279 high-complexity videos requiring long-horizon, multi-step perceptual reasoning.">
-  <meta name="keywords" content="PerceptionComp, Video Understanding, Multimodal LLM, Benchmark, Perception-Centric Reasoning, CVPR 2026, Video QA">
+  <meta name="keywords" content="PerceptionComp, Video Understanding, Multimodal LLM, Benchmark, Perception-Centric Reasoning, arXiv, Video QA">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PerceptionComp: A Video Benchmark for Complex Perception-Centric Reasoning</title>
 
@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bulma.min.css">
-  <!-- Empty favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'></svg>">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -24,6 +23,48 @@
   <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bulma.min.js"></script>
   <script src="./static/js/jquery.csv.min.js"></script>
   <script src="./static/js/csv_to_html_table.js"></script>
+
+  <style>
+    .pc-affiliation-row,
+    .pc-note-row {
+      color: rgba(255,255,255,0.92) !important;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.18);
+    }
+
+    .pc-affiliation-row sup,
+    .pc-note-row sup,
+    .publication-authors sup,
+    .author-block sup {
+      color: #ffffff !important;
+      font-weight: 700;
+    }
+
+    .pc-link-btn {
+      min-width: 132px;
+    }
+
+    .pc-teaser-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .pc-teaser-wrapper img {
+      width: 100%;
+      max-width: 1280px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.15);
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      .pc-link-btn {
+        min-width: unset;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -57,7 +98,7 @@
             <span class="pc-gradient-name">PerceptionComp</span>: A Video Benchmark for<br>Complex Perception-Centric Reasoning
           </h1>
 
-          <div class="is-size-5 publication-authors" style="margin-top:24px;">
+          <div class="is-size-5 publication-authors" style="margin-top:24px; color:white;">
             <span class="author-block"><a href="#" class="pc-author-link">Shaoxuan Li</a><sup>1*</sup>,</span>
             <span class="author-block"><a href="#" class="pc-author-link">Zhixuan Zhao</a><sup>1*</sup>,</span>
             <span class="author-block"><a href="#" class="pc-author-link">Hanze Deng</a><sup>1*</sup>,</span>
@@ -72,7 +113,7 @@
             <span class="author-block"><a href="#" class="pc-author-link">Ranjay Krishna</a><sup>2&#8224;</sup></span>
           </div>
 
-          <div class="is-size-5 publication-authors" style="color:rgba(255,255,255,0.65); margin-top:10px;">
+          <div class="is-size-5 publication-authors pc-affiliation-row" style="margin-top:10px;">
             <span class="author-block"><sup>1</sup>Tsinghua University</span>
             &nbsp;&nbsp;
             <span class="author-block"><sup>2</sup>University of Washington</span>
@@ -80,37 +121,40 @@
             <span class="author-block"><sup>3</sup>Nanyang Technological University</span>
           </div>
 
-          <div class="is-size-6" style="color:rgba(255,255,255,0.5); margin-top:8px;">
-            * Equal contribution &nbsp;&nbsp;&nbsp; # Project co-lead &nbsp;&nbsp;&nbsp; &#8224; Equal advising
+          <div class="is-size-6 pc-note-row" style="margin-top:8px;">
+            <span><sup>*</sup> Equal contribution</span>
+            &nbsp;&nbsp;&nbsp;
+            <span><sup>#</sup> Project co-lead</span>
+            &nbsp;&nbsp;&nbsp;
+            <span><sup>&#8224;</sup> Equal advising</span>
           </div>
 
           <div class="publication-links" style="margin-top:28px;">
             <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded pc-link-btn">
+              <a href="pics/PerceptionComp.pdf" class="external-link button is-normal is-rounded pc-link-btn" target="_blank" rel="noopener noreferrer">
                 <span class="icon"><i class="fas fa-file-pdf"></i></span>
                 <span>Paper</span>
               </a>
             </span>
             <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded pc-link-btn">
+              <a href="https://arxiv.org/abs/2603.26653" class="external-link button is-normal is-rounded pc-link-btn" target="_blank" rel="noopener noreferrer">
                 <span class="icon"><i class="ai ai-arxiv"></i></span>
                 <span>arXiv</span>
               </a>
             </span>
             <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded pc-link-btn">
+              <a href="https://github.com/hrinnnn/PerceptionComp/tree/main" class="external-link button is-normal is-rounded pc-link-btn" target="_blank" rel="noopener noreferrer">
                 <span class="icon"><i class="fab fa-github"></i></span>
-                <span>Code</span>
+                <span>GitHub</span>
               </a>
             </span>
             <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded pc-link-btn">
+              <a href="https://huggingface.co/datasets/hrinnnn/PerceptionComp" class="external-link button is-normal is-rounded pc-link-btn" target="_blank" rel="noopener noreferrer">
                 <span class="icon"><i class="fas fa-database"></i></span>
-                <span>Dataset</span>
+                <span>Hugging Face</span>
               </a>
             </span>
           </div>
-<!-- m:这一段需要最后加一下链接 -->
         </div>
       </div>
     </div>
@@ -157,11 +201,11 @@
 
 <!-- ========== PAPER FIGURE ========== -->
 <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <div class="container is-max-widescreen">
     <div class="hero-body">
-      <h2 class="title is-3 has-text-centered">Paper Teaser</h2>
-      <figure class="image" style="margin:0 auto;">
-        <img src="pics/fig_teaser_eccv.png" alt="PerceptionComp paper figure" style="border-radius:10px; box-shadow:0 4px 24px rgba(0,0,0,0.13); display:block; margin:0 auto;"/>
+      <h2 class="title is-3 has-text-centered">Benchmark Overview</h2>
+      <figure class="image pc-teaser-wrapper">
+        <img src="pics/fig_teaser_eccv.png" alt="PerceptionComp benchmark overview figure"/>
       </figure>
     </div>
   </div>
@@ -278,7 +322,7 @@
     <p class="subtitle has-text-centered" style="margin-bottom:2rem;">
       Sample analysis from PerceptionComp videos
     </p>
-    
+
     <div class="columns is-multiline">
       <div class="column is-half">
         <figure class="image">
@@ -313,7 +357,6 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Benchmark Design</h2>
 
-    <!-- Pipeline -->
     <div class="pc-pipeline" style="margin-bottom:3rem;">
       <div class="pc-pipeline-step">
         <div class="pc-pipeline-icon" style="background:#dbeafe; color:#2563eb;"><i class="fas fa-video fa-lg"></i></div>
@@ -340,7 +383,6 @@
       </div>
     </div>
 
-    <!-- Video Categories -->
     <h3 class="title is-4" style="margin-bottom:1rem;">Video Categories</h3>
     <p class="content">We select videos with high scene and object complexity across seven diverse real-world categories (2–10 min clips). Complexity is measured via <strong>SAM2 instance counts</strong> and <strong>optical-flow magnitude</strong>.</p>
     <div class="columns is-multiline" style="margin-bottom:2.5rem;">
@@ -395,7 +437,6 @@
       </div>
     </div>
 
-    <!-- Perceptual Skills -->
     <h3 class="title is-4" style="margin-bottom:1rem;">Perceptual Skills</h3>
     <p class="content">Each question combines subconditions probing distinct skills. Solving a question requires their coordinated use, not any single narrow competence.</p>
     <div class="columns" style="margin-bottom:2.5rem;">
@@ -427,19 +468,17 @@
   </div>
 </section>
 
-
-
 <!-- ========== BIBTEX ========== -->
 <section class="section" id="bibtex">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@inproceedings{li2026perceptioncomp,
-  title     = {{PerceptionComp}: A Video Benchmark for Complex Perception-Centric Reasoning},
-  author    = {Li, Shaoxuan and Zhao, Zhixuan and Deng, Hanze and Ma, Zirun and
-               Tian, Shulin and Liu, Zuyan and Hu, Yushi and Wu, Haoning and
-               Dong, Yuhao and Liu, Benlin and Liu, Ziwei and Krishna, Ranjay},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year      = {2026}
+    <pre><code>@article{li2026perceptioncomp,
+  title   = {{PerceptionComp}: A Video Benchmark for Complex Perception-Centric Reasoning},
+  author  = {Li, Shaoxuan and Zhao, Zhixuan and Deng, Hanze and Ma, Zirun and
+             Tian, Shulin and Liu, Zuyan and Hu, Yushi and Wu, Haoning and
+             Dong, Yuhao and Liu, Benlin and Liu, Ziwei and Krishna, Ranjay},
+  journal = {arXiv preprint arXiv:2603.26653},
+  year    = {2026}
 }</code></pre>
   </div>
 </section>
@@ -448,7 +487,7 @@
 <footer class="footer">
   <div class="content has-text-centered">
     <p>
-      <strong>PerceptionComp</strong> &nbsp;&#183;&nbsp; CVPR 2026
+      <strong>PerceptionComp</strong> &nbsp;&#183;&nbsp; arXiv 2026
       &nbsp;&#183;&nbsp;
       Tsinghua University, University of Washington, Nanyang Technological University
     </p>
